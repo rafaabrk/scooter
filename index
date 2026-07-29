@@ -118,6 +118,10 @@
     background:repeating-linear-gradient(90deg, #b9b4aa 0 26px, transparent 26px 52px);
     opacity:0.6;
   }
+  .stage-photo-img{
+    position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:1;
+  }
+  .stage-photo-img:not([src=""]):not([src*="USERNAME"]) ~ .stage-photo-slot{display:none;}
   .stage-photo-slot{
     position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
     text-align:center; color:var(--grey); font-size:0.85rem; padding:30px; z-index:2;
@@ -280,10 +284,12 @@
           </svg>
         </div>
         <div class="road-strip"></div>
+        <!-- ضع رابط GitHub الخام (Raw) لصورتك هنا -->
+        <img class="stage-photo-img" src="https://raw.githubusercontent.com/USERNAME/REPO/main/hero.jpg" alt="السكوتر في الطريق" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
         <div class="stage-photo-slot">
           <div class="frame">
             <b>📍 مكان الصورة الرئيسية</b>
-            صورة السكوتر في الطريق مع عمارات على طراز "عدل" في الخلفية — استبدل هذا القسم بصورتك الحقيقية (الوسم: hero-photo)
+            استبدل "USERNAME/REPO/main/hero.jpg" برابط صورتك الحقيقية من GitHub (الوسم: hero-photo)
           </div>
         </div>
       </div>
@@ -305,7 +311,9 @@
       <div class="products">
         <div class="product-card big">
           <span class="badge">الأكثر طلبًا</span>
-          <div class="product-photo">صورة السكوتر الكبير — model-big-photo</div>
+          <div class="product-photo" style="padding:0; overflow:hidden;">
+            <img src="https://raw.githubusercontent.com/USERNAME/REPO/main/scooter-big.jpg" alt="السكوتر الكبير" style="width:100%; height:100%; object-fit:cover;" onerror="this.parentElement.innerHTML='صورة السكوتر الكبير — بدّل الرابط في الكود (model-big-photo)';">
+          </div>
           <h3>السكوتر الكبير</h3>
           <p class="desc">مخصص للأطفال الكبار والمراهقين، بسرعة أعلى وبطارية تدوم أطول، مثالي للطرقات الطويلة في الأحياء.</p>
           <div class="price-row"><span class="price">70,000</span><span class="price-unit">دج</span></div>
@@ -315,7 +323,9 @@
           <a href="#order" class="btn-primary">اطلب الكبير</a>
         </div>
         <div class="product-card">
-          <div class="product-photo">صورة السكوتر الصغير — model-small-photo</div>
+          <div class="product-photo" style="padding:0; overflow:hidden;">
+            <img src="https://raw.githubusercontent.com/USERNAME/REPO/main/scooter-small.jpg" alt="السكوتر الصغير" style="width:100%; height:100%; object-fit:cover;" onerror="this.parentElement.innerHTML='صورة السكوتر الصغير — بدّل الرابط في الكود (model-small-photo)';">
+          </div>
           <h3>السكوتر الصغير</h3>
           <p class="desc">مخصص للأطفال الصغار، خفيف الوزن وسهل التحكم، مثالي كأول سكوتر كهربائي في حياته.</p>
           <div class="price-row"><span class="price">35,000</span><span class="price-unit">دج</span></div>
@@ -335,11 +345,11 @@
         <h2>سكوتر يعيش الطريق، لا ينتظر في الصندوق</h2>
       </div>
       <div class="gallery-grid">
-        <div class="gallery-item">صورة كبيرة: السكوتر أمام عمارات على طراز عدل — gallery-1</div>
-        <div class="gallery-item">gallery-2</div>
-        <div class="gallery-item">gallery-3</div>
-        <div class="gallery-item">gallery-4</div>
-        <div class="gallery-item">gallery-5</div>
+        <div class="gallery-item" style="padding:0; overflow:hidden;"><img src="https://raw.githubusercontent.com/USERNAME/REPO/main/gallery-1.jpg" alt="السكوتر في الحي" style="width:100%; height:100%; object-fit:cover;" onerror="this.parentElement.textContent='صورة: السكوتر أمام عمارات على طراز عدل — gallery-1';"></div>
+        <div class="gallery-item" style="padding:0; overflow:hidden;"><img src="https://raw.githubusercontent.com/USERNAME/REPO/main/gallery-2.jpg" alt="" style="width:100%; height:100%; object-fit:cover;" onerror="this.parentElement.textContent='gallery-2';"></div>
+        <div class="gallery-item" style="padding:0; overflow:hidden;"><img src="https://raw.githubusercontent.com/USERNAME/REPO/main/gallery-3.jpg" alt="" style="width:100%; height:100%; object-fit:cover;" onerror="this.parentElement.textContent='gallery-3';"></div>
+        <div class="gallery-item" style="padding:0; overflow:hidden;"><img src="https://raw.githubusercontent.com/USERNAME/REPO/main/gallery-4.jpg" alt="" style="width:100%; height:100%; object-fit:cover;" onerror="this.parentElement.textContent='gallery-4';"></div>
+        <div class="gallery-item" style="padding:0; overflow:hidden;"><img src="https://raw.githubusercontent.com/USERNAME/REPO/main/gallery-5.jpg" alt="" style="width:100%; height:100%; object-fit:cover;" onerror="this.parentElement.textContent='gallery-5';"></div>
       </div>
     </div>
   </section>
