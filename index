@@ -345,7 +345,7 @@
         <h2>سكوتر يعيش الطريق، لا ينتظر في الصندوق</h2>
       </div>
       <div class="gallery-grid">
-        <div class="gallery-item" style="padding:0; overflow:hidden;"><img src="https://raw.githubusercontent.com/USERNAME/REPO/main/gallery-1.jpg" alt="السكوتر في الحي" style="width:100%; height:100%; object-fit:cover;" onerror="this.parentElement.textContent='صورة: السكوتر أمام عمارات على طراز عدل — gallery-1';"></div>
+        <div class="gallery-item" style="padding:0; overflow:hidden;"><img src="https://github.com/rafaabrk/scooter/blob/main/Gemini_Generated_Image_ec546aec546aec54.png" alt="السكوتر في الحي" style="width:100%; height:100%; object-fit:cover;" onerror="this.parentElement.textContent='صورة: السكوتر أمام عمارات على طراز عدل — gallery-1';"></div>
         <div class="gallery-item" style="padding:0; overflow:hidden;"><img src="https://raw.githubusercontent.com/USERNAME/REPO/main/gallery-2.jpg" alt="" style="width:100%; height:100%; object-fit:cover;" onerror="this.parentElement.textContent='gallery-2';"></div>
         <div class="gallery-item" style="padding:0; overflow:hidden;"><img src="https://raw.githubusercontent.com/USERNAME/REPO/main/gallery-3.jpg" alt="" style="width:100%; height:100%; object-fit:cover;" onerror="this.parentElement.textContent='gallery-3';"></div>
         <div class="gallery-item" style="padding:0; overflow:hidden;"><img src="https://raw.githubusercontent.com/USERNAME/REPO/main/gallery-4.jpg" alt="" style="width:100%; height:100%; object-fit:cover;" onerror="this.parentElement.textContent='gallery-4';"></div>
