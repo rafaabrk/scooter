@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>سكوتر الجزائر | سكوتر كهربائي للأطفال والعائلة</title>
+<meta name="description" content="سكوتر كهربائي آمن وأنيق للأطفال، توصيل إلى جميع ولايات الجزائر، والدفع عند الاستلام.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #fbfaf5;
+    --bg-2: #ffffff;
+    --ink: #201d1a;
+    --grey: #746f68;
+    --line: rgba(32,29,26,0.10);
+    --coral: #ff5c48;
+    --blue: #2e7de0;
+    --yellow: #ffc93c;
+    --coral-dim: rgba(255,92,72,0.10);
+    --blue-dim: rgba(46,125,224,0.10);
+    --yellow-dim: rgba(255,201,60,0.18);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Tajawal', sans-serif;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3, .display{
+    font-family:'Lalezar', 'Tajawal', sans-serif;
+    font-weight:400;
+    letter-spacing:0.5px;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1160px; margin:0 auto; padding:0 22px;}
+
+  .bg-blobs{
+    position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden;
+  }
+  .bg-blobs span{
+    position:absolute; border-radius:50%; filter:blur(70px); opacity:0.35;
+  }
+  .bg-blobs .b1{width:420px; height:420px; background:var(--coral); top:-140px; right:-100px;}
+  .bg-blobs .b2{width:380px; height:380px; background:var(--blue); top:420px; left:-140px; opacity:0.25;}
+  .bg-blobs .b3{width:300px; height:300px; background:var(--yellow); bottom:-100px; right:10%; opacity:0.4;}
+
+  /* NAV */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(251,250,245,0.8);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  header .wrap{display:flex; align-items:center; justify-content:space-between; height:64px;}
+  .logo{font-family:'Lalezar'; font-size:1.5rem; display:flex; align-items:center; gap:8px;}
+  .logo span{color:var(--coral);}
+  .nav-cta{
+    background:var(--coral); color:#fff; font-weight:700; font-size:0.85rem;
+    padding:9px 18px; border-radius:999px;
+  }
+
+  /* HERO */
+  .hero{position:relative; padding:64px 0 40px; z-index:1;}
+  .hero-eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    border:1px solid var(--line); background:var(--bg-2);
+    padding:6px 14px; border-radius:999px; font-size:0.78rem; color:var(--grey);
+    margin-bottom:22px;
+  }
+  .hero-eyebrow b{color:var(--coral); font-weight:700;}
+  .hero h1{
+    font-size:clamp(2.6rem, 8vw, 4.6rem);
+    line-height:1.2;
+    color:var(--ink);
+  }
+  .hero h1 em{font-style:normal; color:var(--blue);}
+  .hero p.lead{
+    color:var(--grey); font-size:1.1rem; max-width:540px; margin-top:18px; line-height:1.9;
+  }
+  .hero-actions{display:flex; gap:14px; margin-top:32px; flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--coral); color:#fff; font-weight:700; padding:16px 30px;
+    border-radius:14px; font-size:1rem; border:none; cursor:pointer;
+    transition:transform .15s ease;
+  }
+  .btn-primary:hover{transform:translateY(-2px);}
+  .btn-ghost{
+    border:1px solid var(--line); color:var(--ink); padding:16px 26px;
+    border-radius:14px; font-size:1rem; background:var(--bg-2);
+  }
+
+  /* HERO VISUAL — scooter over AADL skyline silhouette (signature element) */
+  .hero-stage{
+    position:relative; margin-top:52px; border-radius:26px; overflow:hidden;
+    border:1px solid var(--line);
+    background:linear-gradient(180deg, #fff, var(--bg));
+    min-height:340px;
+  }
+  .skyline{
+    position:absolute; bottom:0; left:0; right:0; height:58%;
+    display:flex; align-items:flex-end; opacity:0.95;
+  }
+  .skyline svg{width:100%; height:100%;}
+  .road-strip{
+    position:absolute; bottom:0; left:0; right:0; height:64px;
+    background:#eeece5; border-top:2px solid #ddd9d0;
+  }
+  .road-strip::after{
+    content:""; position:absolute; top:50%; left:0; right:0; height:4px;
+    transform:translateY(-50%);
+    background:repeating-linear-gradient(90deg, #b9b4aa 0 26px, transparent 26px 52px);
+    opacity:0.6;
+  }
+  .stage-photo-img{
+    position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:1;
+  }
+  .stage-photo-img:not([src=""]):not([src*="USERNAME"]) ~ .stage-photo-slot{display:none;}
+  .stage-photo-slot{
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    text-align:center; color:var(--grey); font-size:0.85rem; padding:30px; z-index:2;
+  }
+  .stage-photo-slot .frame{
+    border:1.5px dashed rgba(32,29,26,0.22); border-radius:16px;
+    padding:22px 26px; background:rgba(255,255,255,0.7);
+  }
+  .stage-photo-slot b{color:var(--coral); display:block; margin-bottom:6px; font-size:0.95rem;}
+
+  /* TRUST BAR */
+  .trust{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:44px;}
+  .trust-item{
+    border:1px solid var(--line); background:var(--bg-2); border-radius:14px;
+    padding:18px 14px; text-align:center; box-shadow:0 6px 20px rgba(32,29,26,0.04);
+  }
+  .trust-item .ic{font-size:1.5rem; margin-bottom:8px;}
+  .trust-item span{font-size:0.85rem; color:var(--grey);}
+
+  section{position:relative; z-index:1; padding:70px 0;}
+  .section-head{margin-bottom:36px;}
+  .eyebrow-label{color:var(--coral); font-size:0.85rem; font-weight:700; letter-spacing:1px;}
+  .section-head h2{font-size:clamp(1.8rem,5vw,2.6rem); margin-top:8px;}
+
+  /* PRODUCT CARDS */
+  .products{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+  @media(max-width:760px){.products{grid-template-columns:1fr;}}
+  .product-card{
+    border:1px solid var(--line); border-radius:22px; background:var(--bg-2);
+    padding:26px; position:relative; overflow:hidden; box-shadow:0 10px 30px rgba(32,29,26,0.05);
+  }
+  .product-card.big{border-color:rgba(46,125,224,0.35);}
+  .badge{
+    position:absolute; top:22px; left:22px; background:var(--blue-dim); color:var(--blue);
+    font-size:0.75rem; font-weight:700; padding:5px 12px; border-radius:999px;
+  }
+  .product-photo{
+    height:180px; border-radius:16px; background:var(--yellow-dim); border:1px dashed var(--line);
+    display:flex; align-items:center; justify-content:center; color:var(--grey); font-size:0.8rem;
+    margin-top:14px; text-align:center; padding:10px;
+  }
+  .product-card.big .product-photo{background:var(--blue-dim);}
+  .product-card h3{font-size:1.6rem; margin-top:20px;}
+  .product-card .desc{color:var(--grey); font-size:0.92rem; margin-top:8px; line-height:1.8;}
+  .price-row{display:flex; align-items:baseline; gap:8px; margin-top:18px;}
+  .price{font-family:'Lalezar'; font-size:2.1rem; color:var(--coral);}
+  .price-unit{color:var(--grey); font-size:0.9rem;}
+  .spec-list{display:flex; flex-wrap:wrap; gap:8px; margin-top:16px;}
+  .spec-list span{
+    border:1px solid var(--line); border-radius:999px; padding:5px 12px; font-size:0.78rem; color:var(--grey);
+  }
+  .product-card .btn-primary{width:100%; margin-top:20px; text-align:center;}
+
+  /* GALLERY */
+  .gallery-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:14px;
+  }
+  @media(max-width:760px){.gallery-grid{grid-template-columns:repeat(2,1fr);}}
+  .gallery-item{
+    aspect-ratio:4/5; border-radius:16px; background:var(--bg-2);
+    border:1px dashed var(--line); display:flex; align-items:center; justify-content:center;
+    color:var(--grey); font-size:0.78rem; text-align:center; padding:12px;
+    box-shadow:0 6px 20px rgba(32,29,26,0.04);
+  }
+  .gallery-item:nth-child(3n+1){background:var(--coral-dim);}
+  .gallery-item:nth-child(3n+2){background:var(--blue-dim);}
+  .gallery-item:nth-child(3n+3){background:var(--yellow-dim);}
+  .gallery-item:first-child{grid-row:span 2; aspect-ratio:auto;}
+  .gallery-item.illustration{
+    flex-direction:column; gap:10px; border-style:solid; font-weight:700; color:var(--ink);
+  }
+  .gallery-item.illustration span{font-size:0.82rem;}
+
+  /* FEATURE COLUMNS: parents / kids */
+  .why-grid{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+  @media(max-width:760px){.why-grid{grid-template-columns:1fr;}}
+  .why-card{border:1px solid var(--line); border-radius:22px; padding:30px; background:var(--bg-2); box-shadow:0 10px 30px rgba(32,29,26,0.05);}
+  .why-card h3{font-size:1.6rem; margin-bottom:18px; display:flex; align-items:center; gap:10px;}
+  .why-card ul{list-style:none;}
+  .why-card li{
+    display:flex; gap:12px; padding:12px 0; border-top:1px solid var(--line); color:var(--grey); font-size:0.95rem; line-height:1.7;
+  }
+  .why-card li:first-child{border-top:none;}
+  .why-card li .dot{flex-shrink:0;}
+  .why-card.parents li .dot{color:var(--blue);}
+  .why-card.kids li .dot{color:var(--coral);}
+
+  /* FORM */
+  .order-section{
+    border:1px solid var(--line); border-radius:26px; background:linear-gradient(180deg, #fff, var(--bg));
+    padding:44px 30px; box-shadow:0 20px 50px rgba(32,29,26,0.06);
+  }
+  .order-grid{display:grid; grid-template-columns:1fr 1fr; gap:36px;}
+  @media(max-width:760px){.order-grid{grid-template-columns:1fr; gap:20px;}}
+  .order-info h2{font-size:2rem;}
+  .order-info p{color:var(--grey); margin-top:14px; line-height:1.9;}
+  .order-info ul{margin-top:20px;}
+  .order-info li{color:var(--grey); font-size:0.9rem; padding:6px 0;}
+  form{display:flex; flex-direction:column; gap:14px;}
+  label{font-size:0.85rem; color:var(--grey); margin-bottom:6px; display:block;}
+  input, select{
+    width:100%; background:#fff; border:1px solid var(--line); border-radius:12px;
+    padding:14px 16px; color:var(--ink); font-family:'Tajawal'; font-size:0.95rem;
+  }
+  input:focus, select:focus{outline:2px solid var(--coral); border-color:transparent;}
+  .form-status{font-size:0.85rem; margin-top:6px; min-height:20px;}
+  .form-status.ok{color:var(--blue);}
+  .form-status.err{color:var(--coral);}
+  select{appearance:none;}
+
+  footer{border-top:1px solid var(--line); padding:34px 0; margin-top:20px;}
+  footer .wrap{display:flex; flex-wrap:wrap; justify-content:space-between; gap:16px; align-items:center;}
+  footer .socials{display:flex; gap:16px;}
+  footer .socials a{color:var(--grey); font-size:0.9rem; border:1px solid var(--line); padding:8px 16px; border-radius:999px;}
+  footer small{color:#a29d93; display:block; margin-top:18px;}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .btn-primary{transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-blobs"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
+
+<header>
+  <div class="wrap">
+    <div class="logo">سكوتر<span>الجزائر</span></div>
+    <a href="#order" class="nav-cta">اطلب الآن</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-eyebrow">صُنع خصيصًا لعائلات <b>الجزائر</b> 🇩🇿</div>
+      <h1>سكوتر يهدي طفلك<br><em>ابتسامة</em> لا تُنسى</h1>
+      <p class="lead">سكوتر كهربائي متين وآمن، بتصميم أنيق يجمع بين الألوان الزاهية والبساطة. من شارعكم إلى شارع صديقكم، مع التوصيل إلى جميع الولايات والدفع عند الاستلام.</p>
+      <div class="hero-actions">
+        <a href="#order" class="btn-primary">احجز سكوتر طفلك</a>
+        <a href="#products" class="btn-ghost">شاهد الموديلات</a>
+      </div>
+
+      <div class="hero-stage">
+        <div class="skyline">
+          <svg viewBox="0 0 1200 300" preserveAspectRatio="none">
+            <rect x="0" y="90" width="140" height="210" fill="#e9e6dc"/>
+            <rect x="150" y="60" width="110" height="240" fill="#f1efe6"/>
+            <rect x="270" y="110" width="160" height="190" fill="#e4e0d4"/>
+            <rect x="440" y="40" width="120" height="260" fill="#eeebe1"/>
+            <rect x="570" y="95" width="150" height="205" fill="#e9e6dc"/>
+            <rect x="730" y="70" width="110" height="230" fill="#f1efe6"/>
+            <rect x="850" y="115" width="170" height="185" fill="#e4e0d4"/>
+            <rect x="1030" y="55" width="130" height="245" fill="#eeebe1"/>
+            <g fill="#2e7de0" opacity="0.28">
+              <rect x="20" y="115" width="14" height="14"/><rect x="46" y="115" width="14" height="14"/>
+              <rect x="20" y="150" width="14" height="14"/><rect x="46" y="150" width="14" height="14"/>
+              <rect x="180" y="90" width="14" height="14"/><rect x="206" y="90" width="14" height="14"/>
+              <rect x="460" y="70" width="14" height="14"/><rect x="486" y="70" width="14" height="14"/>
+              <rect x="870" y="145" width="14" height="14"/><rect x="896" y="145" width="14" height="14"/>
+              <rect x="1050" y="85" width="14" height="14"/><rect x="1076" y="85" width="14" height="14"/>
+            </g>
+          </svg>
+        </div>
+        <div class="road-strip"></div>
+        <!-- ضع رابط GitHub الخام (Raw) لصورتك هنا -->
+        <img class="stage-photo-img" src="https://raw.githubusercontent.com/rafaabrk/scooter/main/ChatGPT%20Image%20Jul%2029%2C%202026%2C%2002_31_37%20AM.png" alt="السكوتر في الطريق" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="stage-photo-slot">
+          <div class="frame">
+            <b>📍 مكان الصورة الرئيسية</b>
+            استبدل "USERNAME/REPO/main/hero.jpg" برابط صورتك الحقيقية من GitHub (الوسم: hero-photo)
+          </div>
+        </div>
+      </div>
+
+      <div class="trust">
+        <div class="trust-item"><div class="ic">🚚</div><span>توصيل إلى 58 ولاية</span></div>
+        <div class="trust-item"><div class="ic">💵</div><span>الدفع عند الاستلام</span></div>
+        <div class="trust-item"><div class="ic">🛡️</div><span>ضمان 6 أشهر</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="products">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow-label">الموديلات</div>
+        <h2>اختر الحجم المناسب لطفلك</h2>
+      </div>
+      <div class="products">
+        <div class="product-card big">
+          <span class="badge">الأكثر طلبًا</span>
+          <div class="product-photo" style="padding:0; overflow:hidden;">
+            <img src="https://raw.githubusercontent.com/rafaabrk/scooter/main/Gemini_Generated_Image_ec546aec546aec54.png" alt="السكوتر الكبير" style="width:100%; height:100%; object-fit:cover;" onerror="this.parentElement.innerHTML='صورة السكوتر الكبير — بدّل الرابط في الكود (model-big-photo)';">
+          </div>
+          <h3>السكوتر الكبير</h3>
+          <p class="desc">مخصص للأطفال الكبار والمراهقين، بسرعة أعلى وبطارية تدوم أطول، مثالي للطرقات الطويلة في الأحياء.</p>
+          <div class="price-row"><span class="price">70,000</span><span class="price-unit">دج</span></div>
+          <div class="spec-list">
+            <span>من عمر 8 سنوات</span><span>حتى 25 كلغ حمولة إضافية</span><span>بطارية طويلة المدى</span>
+          </div>
+          <a href="#order" class="btn-primary">اطلب الكبير</a>
+        </div>
+        <div class="product-card">
+          <div class="product-photo" style="padding:0; overflow:hidden;">
+            <img src="https://raw.githubusercontent.com/rafaabrk/scooter/main/Gemini_Generated_Image_ez70ihez70ihez70.png" alt="السكوتر الصغير" style="width:100%; height:100%; object-fit:cover;" onerror="this.parentElement.innerHTML='صورة السكوتر الصغير — بدّل الرابط في الكود (model-small-photo)';">
+          </div>
+          <h3>السكوتر الصغير</h3>
+          <p class="desc">مخصص للأطفال الصغار، خفيف الوزن وسهل التحكم، مثالي كأول سكوتر كهربائي في حياته.</p>
+          <div class="price-row"><span class="price">35,000</span><span class="price-unit">دج</span></div>
+          <div class="spec-list">
+            <span>من 4 إلى 8 سنوات</span><span>سرعة محدودة للأمان</span><span>خفيف الوزن</span>
+          </div>
+          <a href="#order" class="btn-primary">اطلب الصغير</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow-label">من الشارع إلى بيتكم</div>
+        <h2>سكوتر يعيش الطريق، لا ينتظر في الصندوق</h2>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item" style="padding:0; overflow:hidden;"><img src="https://raw.githubusercontent.com/rafaabrk/scooter/main/Gemini_Generated_Image_ez70ihez70ihez70.png" alt="السكوتر في الحي" style="width:100%; height:100%; object-fit:cover;" onerror="this.parentElement.textContent='صورة السكوتر';"></div>
+        <div class="gallery-item illustration">
+          <svg viewBox="0 0 64 64" width="40" height="40" fill="none" stroke="var(--blue)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M32 6 54 14v16c0 16-10 26-22 32C20 56 10 46 10 30V14z"/><path d="M22 32l7 7 15-15"/></svg>
+          <span>الأمان أولًا</span>
+        </div>
+        <div class="gallery-item illustration">
+          <svg viewBox="0 0 64 64" width="40" height="40" fill="none" stroke="var(--coral)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="22" cy="20" r="8"/><circle cx="44" cy="20" r="8"/><path d="M8 54c0-10 7-16 14-16s14 6 14 16"/><path d="M30 54c0-10 7-16 14-16s14 6 14 16"/></svg>
+          <span>لحظات عائلية</span>
+        </div>
+        <div class="gallery-item illustration">
+          <svg viewBox="0 0 64 64" width="40" height="40" fill="none" stroke="var(--yellow)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="20" y="10" width="24" height="46" rx="4"/><rect x="27" y="4" width="10" height="8" rx="1.5"/><path d="M27 34h10M32 26v16"/></svg>
+          <span>بطارية تدوم طويلًا</span>
+        </div>
+        <div class="gallery-item illustration">
+          <svg viewBox="0 0 64 64" width="40" height="40" fill="none" stroke="var(--blue)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="24"/><path d="M32 8v8M32 48v8M8 32h8M48 32h8" stroke="var(--coral)"/></svg>
+          <span>ألوان مرحة</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow-label">لكل فرد سببه الخاص</div>
+        <h2>يعجب الوالدين، ويُفرح الأطفال</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-card parents">
+          <h3>👨‍👩‍👧 للوالدين</h3>
+          <ul>
+            <li><span class="dot">●</span> سرعة محدودة حسب العمر، فالأمان أولًا</li>
+            <li><span class="dot">●</span> فرامل قوية ومكابح أمان مزدوجة</li>
+            <li><span class="dot">●</span> بناء متين يتحمل الاستخدام اليومي</li>
+            <li><span class="dot">●</span> ضمان حقيقي وقطع غيار متوفرة</li>
+          </ul>
+        </div>
+        <div class="why-card kids">
+          <h3>🛴 للأطفال</h3>
+          <ul>
+            <li><span class="dot">●</span> تصميم أنيق وألوان زاهية تعجب الجميع</li>
+            <li><span class="dot">●</span> سهل القيادة من الاستخدام الأول</li>
+            <li><span class="dot">●</span> يمنحهم فرصة اللعب مع أصدقائهم في الحي</li>
+            <li><span class="dot">●</span> إضاءة LED تظهر بوضوح في الليل</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="order">
+    <div class="wrap">
+      <div class="order-section">
+        <div class="order-grid">
+          <div class="order-info">
+            <h2>احجز سكوتر طفلك اليوم</h2>
+            <p>املأ المعلومات وسنتصل بك لتأكيد الطلب وتحديد مكان التوصيل.</p>
+            <ul>
+              <li>✓ نتصل بك في أقرب وقت</li>
+              <li>✓ التوصيل يصل إلى باب منزلك</li>
+              <li>✓ الدفع نقدًا عند الاستلام</li>
+            </ul>
+          </div>
+          <form id="orderForm">
+            <div>
+              <label for="fullname">الاسم الكامل</label>
+              <input type="text" id="fullname" name="fullname" placeholder="مثال: أحمد بن علي" required>
+            </div>
+            <div>
+              <label for="phone">رقم الهاتف</label>
+              <input type="tel" id="phone" name="phone" placeholder="05XXXXXXXX" required pattern="0[5-7][0-9]{8}">
+            </div>
+            <div>
+              <label for="wilaya">الولاية</label>
+              <select id="wilaya" name="wilaya" required>
+                <option value="" disabled selected>اختر ولايتك</option>
+                <option>01 - أدرار</option>
+                <option>02 - الشلف</option>
+                <option>03 - الأغواط</option>
+                <option>04 - أم البواقي</option>
+                <option>05 - باتنة</option>
+                <option>06 - بجاية</option>
+                <option>07 - بسكرة</option>
+                <option>08 - بشار</option>
+                <option>09 - البليدة</option>
+                <option>10 - البويرة</option>
+                <option>11 - تمنراست</option>
+                <option>12 - تبسة</option>
+                <option>13 - تلمسان</option>
+                <option>14 - تيارت</option>
+                <option>15 - تيزي وزو</option>
+                <option>16 - الجزائر</option>
+                <option>17 - الجلفة</option>
+                <option>18 - جيجل</option>
+                <option>19 - سطيف</option>
+                <option>20 - سعيدة</option>
+                <option>21 - سكيكدة</option>
+                <option>22 - سيدي بلعباس</option>
+                <option>23 - عنابة</option>
+                <option>24 - قالمة</option>
+                <option>25 - قسنطينة</option>
+                <option>26 - المدية</option>
+                <option>27 - مستغانم</option>
+                <option>28 - المسيلة</option>
+                <option>29 - معسكر</option>
+                <option>30 - ورقلة</option>
+                <option>31 - وهران</option>
+                <option>32 - البيض</option>
+                <option>33 - إليزي</option>
+                <option>34 - برج بوعريريج</option>
+                <option>35 - بومرداس</option>
+                <option>36 - الطارف</option>
+                <option>37 - تندوف</option>
+                <option>38 - تيسمسيلت</option>
+                <option>39 - الوادي</option>
+                <option>40 - خنشلة</option>
+                <option>41 - سوق أهراس</option>
+                <option>42 - تيبازة</option>
+                <option>43 - ميلة</option>
+                <option>44 - عين الدفلى</option>
+                <option>45 - النعامة</option>
+                <option>46 - عين تموشنت</option>
+                <option>47 - غرداية</option>
+                <option>48 - غليزان</option>
+                <option>49 - تيميمون</option>
+                <option>50 - برج باجي مختار</option>
+                <option>51 - أولاد جلال</option>
+                <option>52 - بني عباس</option>
+                <option>53 - عين صالح</option>
+                <option>54 - عين قزام</option>
+                <option>55 - تقرت</option>
+                <option>56 - جانت</option>
+                <option>57 - المغير</option>
+                <option>58 - المنيعة</option>
+              </select>
+            </div>
+            <div>
+              <label for="model">الموديل المطلوب</label>
+              <select id="model" name="model" required>
+                <option value="" disabled selected>اختر الموديل</option>
+                <option value="big">السكوتر الكبير — 70,000 دج</option>
+                <option value="small">السكوتر الصغير — 35,000 دج</option>
+              </select>
+            </div>
+            <div>
+              <label for="address">العنوان بالتفصيل (اختياري)</label>
+              <input type="text" id="address" name="address" placeholder="الحي، البلدية...">
+            </div>
+            <button type="submit" class="btn-primary">أكّد الطلبية</button>
+            <div class="form-status" id="formStatus"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="logo">سكوتر<span>الجزائر</span></div>
+    <div class="socials">
+      <a href="#" target="_blank" rel="noopener">فيسبوك</a>
+      <a href="#" target="_blank" rel="noopener">إنستغرام</a>
+      <a href="tel:+213000000000">اتصل بنا</a>
+    </div>
+  </div>
+  <div class="wrap"><small>© 2026 سكوتر الجزائر — جميع الحقوق محفوظة</small></div>
+</footer>
+
+<script>
+  // ---- Supabase config ----
+  // 1. Replace with your actual project values (Project Settings → API)
+  const SUPABASE_URL = "https://kpuuahrnszawbjgkptqe.supabase.co";
+  const SUPABASE_ANON_KEY = "sb_publishable_t6WsvWONra3dbz-LGiCEkQ_m0ZmtrVr";
+  const TABLE_NAME = "scooterdz";
+
+  // Expected table columns in Supabase:
+  // id (uuid, auto) | fullname (text) | phone (text) | wilaya (text)
+  // model (text) | address (text) | created_at (timestamptz, default now())
+
+  const form = document.getElementById("orderForm");
+  const status = document.getElementById("formStatus");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    status.textContent = "جارٍ الإرسال...";
+    status.className = "form-status";
+
+    const payload = {
+      fullname: document.getElementById("fullname").value.trim(),
+      phone: document.getElementById("phone").value.trim(),
+      wilaya: document.getElementById("wilaya").value,
+      model: document.getElementById("model").value,
+      address: document.getElementById("address").value.trim(),
+    };
+
+    try {
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/${TABLE_NAME}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "apikey": SUPABASE_ANON_KEY,
+          "Authorization": `Bearer ${SUPABASE_ANON_KEY}`,
+          "Prefer": "return=minimal"
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (!res.ok) throw new Error("request failed");
+
+      status.textContent = "تم إرسال طلبك بنجاح! سنتصل بك قريبًا 🎉";
+      status.className = "form-status ok";
+      form.reset();
+    } catch (err) {
+      status.textContent = "حدث خطأ، يرجى المحاولة مرة أخرى أو الاتصال بنا مباشرة.";
+      status.className = "form-status err";
+      console.error(err);
+    }
+  });
+</script>
+
+</body>
+</html>
